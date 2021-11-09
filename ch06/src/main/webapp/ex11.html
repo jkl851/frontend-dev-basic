@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+/*
+	# DOM Event 종류
+	1. 마우스
+		- mousedown -> mouseup -> click -> mousedown -> mouseup -> click -> dblclick
+		- mouseover, mouseout
+	2. 키보드
+		- keydown -> keyup -> keypress
+	3. form
+		- submit
+	4. input
+		- focus, blur, change
+	5. touch(모바일 웹)
+	
+	# 용어정리
+	1. Event Name
+		- load, click, mousedown, submit, blur, ...
+	2. Event Attribute
+		- DOM Event Model Level 0 
+		- onload, onclick, onmousedown, onsubmit, onblur....
+	3. Event Listener
+		- DOM Event Model Level 2
+		- function(){}
+	4. Event Model
+		- DOM의 HTMLElement의 Event Handler를 설정하는 방법에 대한 표준
+		- DOM Event Model level 0
+		: Inline
+			태그안에 onclick = '자바스크립트 코드' 넣는 것 X (웹표준 위배)
+		: Basic (고전적인 이벤트 처리 방식, 기본 이벤트 처리 방식)
+			element.onclick = function(){...}
+			문제점은 이벤트 핸들러를 하나밖에 세팅 못 하는 것
+		- DOM Event Model Level 2
+			Observer 패턴을 적용하여 Listener(함수, 이벤트 핸들러)를 등록하는 방식
+			Listener를 등록/제거 하는 함수(API)를 제공해야 한다.
+			다중 이벤트 핸들러를 등록 할 수 있다.
+			: MS Internet Explorer (<=8) - attachEvent/detachEvent
+			: others(표준) - addEventListener/removeEventListener
+
+*/
+ window.addEventListener("load", function(){
+	document
+	.getElementById('header-2')
+	.onclick = function() {
+		console.log("Event Model Level 0 - Basic");
+	};
+	
+	document
+	.getElementById('header-3')
+	.addEventListener("click", function() {
+		console.log("Event Model Level 2");
+	});
+	
+});
+</script>
+</head>
+<body>
+	<h1>DOM(Document Object Model)</h1>
+	<h2>5. Event 처리</h2>
+	
+	<h3 onclick="console.log('Event Model Level 0 - Inline');">Event Model Level 0 - Inline</h3>
+	<h3 id='header-2'>Event Model Level 0 - Basic</h3>
+	<h3 id='header-3'>Event Model Level 2</h3>
+	
+</body>
+</html>
