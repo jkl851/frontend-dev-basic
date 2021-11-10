@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+$(function(){
+	var $obj = $(".par");
+	
+	console.log($obj.length); //2
+	console.log(typeof($obj) + ":" + $obj instanceof Array); // 배열이 아니라 유사배열
+	console.log($obj[0]); 		// jQuery Object가 아니다. HTMLElement다.
+	console.log($obj.get(0));	// jQuery Object가 아니다. HTMLElement다.
+	
+	$obj.css('color', 'red');
+	$obj.click(function(){
+		// 이벤트 핸들러에서 this는 jQuery Object가 아닌 HTMLElement다.
+		console.log("clicked: " + this);
+		
+		// var $obj = $(this);
+		// $obj.css("text-decoration", "underline");
+		// $obj.text('클릭!!!');
+		
+		// jQuery Object의 거의 모든 함수(예외: Traversing)는
+		// 호출한 jQuery Object를 다시 반환한다.
+		// 함수 체인(chain)이 가능하다.
+		$(this)
+			.parents()
+			.css("text-decoration", "underline")
+			.text('클릭!!!');
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 id="header">Simple jQuery 만들기2</h1>
+	
+	<p class='par'>문장1</p>
+	<p>문장2</p>
+	<p class='par'>문장3</p>
+	<p>문장4</p>
+</body>
+</html>

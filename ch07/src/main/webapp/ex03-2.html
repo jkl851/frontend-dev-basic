@@ -2,9 +2,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="jquery/jquery-simple.js"></script>
 <script>
 $(function(){
+	console.log("load");
+	
 	var $obj = $(".par");
 	$obj.click(function(){
 		console.log("click:" + this);
@@ -13,12 +15,17 @@ $(function(){
 	setTimeout(function(){
 		$obj.css('color', 'red');
 	}, 2000);
+	
+	setTimeout(function(){
+		$('p').css('font-weight', 'bold');
+	}, 4000);
+	
 });
 </script>
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 id="header">Simple jQuery 만들기1</h1>
+	<h1 id="header">Simple jQuery 만들기2</h1>
 	
 	<p class='par'>문장1</p>
 	<p>문장2</p>
