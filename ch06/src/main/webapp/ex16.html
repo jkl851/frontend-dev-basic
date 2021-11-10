@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+/*
+	Event Propagation(Event Bubbling)
+	특정 화면 요소(Elements)에서 이벤트가 발생했을 때 해당 이벤트가 더 상/하위의 화면 요소들로 전파되어 가는 특성
+	IE8 포함 이전: outer-div > inner-div > header > text
+	standard others : outer-div < inner-div < header < text
+ */
+window.addEventListener("load", function(){
+	document
+	.getElementById('outer-div')
+	.addEventListener('click', function(){
+		console.log('outer-div');
+	});
+	
+	document
+	.getElementById('inner-div')
+	.addEventListener('click', function(e){
+		var event = e || window.event /* ie8 포함 이전*/
+		
+		/* prevent event's propagation(bubbling) */
+		event.cancelBubble = true;  /* ie8 포함 이전*/
+		event.stopPropagation && event.stopPropagation(); /* standard other browser */
+		console.log('inner-div');
+	});
+	
+	document
+	.getElementById('header')
+	.addEventListener('click', function(){
+		console.log('header');
+	});
+	
+	document
+	.getElementById('text')
+	.addEventListener('click', function(){
+		console.log('text');
+	});
+});
+</script>
+</head>
+<body>
+	<h1>DOM(Document Object Model)</h1>
+	<h2>7.Event Propagation(Event Bubbling)</h2>
+	
+	<div id='outer-div'>
+		<div id='inner-div'>
+			<h1 id='header'>
+				<span id='text'>text</span>
+			</h1>
+		</div>
+	</div>
+	
+</body>
+</html>

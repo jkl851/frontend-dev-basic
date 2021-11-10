@@ -6,9 +6,8 @@
 <script>
 /*
  	기본 이벤트 핸들러 동작 막기
- 	form : validation
- 	anchor : 버튼이나 메뉴로 사용하는 경우 click event
- 	
+ 	1. anchor : 버튼이나 메뉴로 사용하는 경우 click event
+ 	2. form : validation(submit event)
  */
 window.addEventListener("load", function(){
 	document
@@ -23,7 +22,7 @@ window.addEventListener("load", function(){
 </head>
 <body>
 	<h1>DOM(Document Object Model)</h1>
-	<h2>6. 기본(default) Event Handler 동작 막기(prevent)</h2>
+	<h2>6. 기본(default) Event Handler 동작 막기(prevent) - 1. anchor </h2>
 	
 	<a href="#" id="btn-delete">삭제</a>
 	
