@@ -2,15 +2,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
-<script type="text/javascript">
-	$( function() {
-		/* 코드를 완성하세요 */
-	} );  
+<script type="text/javascript" src="jquery/jquery-3.6.0.js"></script>
+<script>
+$(function(){
+	setTimeout(function(){
+		var html = "<p>내용입니다.</p>";
+		$("#h2").after(html);
+	}, 1000);
+});
 </script>
 </head>
 <body>
-<h1 id="h1">타이틀입니다.</h1>
-
+	<h1>DOM 조작 API - after()</h1>
+	<h2 id="h2">제목입니다.</h2>
 </body>
 </html>
