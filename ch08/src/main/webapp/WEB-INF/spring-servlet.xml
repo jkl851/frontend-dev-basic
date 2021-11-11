@@ -40,6 +40,12 @@
 						: 마샬링/언마샬링을 Anntation 기반으로 한다.
 						: JAXBAnnotation(@XmlElementRoot)를 사용해서 직관적 매핑
 						: Jaxb2RootElementHttpMessageConverter
+						
+					<dependency>
+					   <groupId>com.fasterxml.jackson.dataformat</groupId>
+					   <artifactId>jackson-dataformat-xml</artifactId>
+					   <version>2.9.6</version>
+					</dependency>
 			 -->
 			<bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter">
 				<property name="supportedMediaTypes">
