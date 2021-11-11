@@ -21,11 +21,25 @@ var images = [
 $(function(){
 
 	$("#btn-change").click(function(){
-		// 랜덤 변수 
-		var result = Math.floor( Math.random() * (images.length));
-		console.log(result);
+		do {
+			var result = Math.floor( Math.random() * (images.length));
+			var altName = images[result].split(":")[0];
+		} while(altName == $('div img').attr('alt'));
+		
+		var imageLink = "images/" + images[result].split(":")[1];
+		
+		$("div img").attr({
+				src: imageLink,
+				alt: altName
+			})
+
 	});
 	
+	$("#btn-slideshow").click(function(){
+		setTimeout(function() {
+			
+		}, 1000);
+	});
 });
 </script>
 </head>
