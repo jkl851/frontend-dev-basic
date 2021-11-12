@@ -6,41 +6,50 @@
 <link href='image-viewer.css' type='text/css' rel='stylesheet' />
 <script type="text/javascript" src="./jquery/jquery-3.6.0.js"></script>
 <script type="text/javascript">
+	var images = [ "국화:Chrysanthemum.jpg", "사막:Desert.jpg",
+			"수국:Hydrangeas.jpg", "해파리:Jellyfish.jpg", "코알라:Koala.jpg",
+			"등대:Lighthouse.jpg", "펭귄:Penguins.jpg", "툴립:Tulips.jpg" ];
 
-var images = [ 
-	"국화:Chrysanthemum.jpg", 
-	"사막:Desert.jpg", 
-	"수국:Hydrangeas.jpg", 
-	"해파리:Jellyfish.jpg", 
-	"코알라:Koala.jpg", 
-	"등대:Lighthouse.jpg", 
-	"펭귄:Penguins.jpg", 
-	"툴립:Tulips.jpg" 
-	];
-
-$(function(){
-
-	$("#btn-change").click(function(){
+	var changeImg = function() {
 		do {
-			var result = Math.floor( Math.random() * (images.length));
+			var result = Math.floor(Math.random() * (images.length));
 			var altName = images[result].split(":")[0];
-		} while(altName == $('div img').attr('alt'));
-		
+		} while (altName == $('div img').attr('alt'));
 		var imageLink = "images/" + images[result].split(":")[1];
-		
-		$("div img").attr({
-				src: imageLink,
-				alt: altName
-			})
 
+		$("div img").attr({
+			src : imageLink,
+			alt : altName
+		})
+	}
+
+	$(function() {
+		// 슬라이드쇼 토글
+		let toggle = true;
+		var start = null;
+		// 랜덤 바꾸기
+		$("#btn-change").click(function() {
+			changeImg();
+		}),
+
+		// 슬라이드쇼
+		$("#btn-slideshow").click(function() {
+			console.log(toggle)
+			$("#btn-slideshow").text('슬라이드쇼 멈춤');
+			//this.toggle = !this.toggle;
+			if (toggle) {
+				start = setInterval(function() {
+				changeImg();
+				toggle = false;
+				}, 1000);
+
+			} else {
+				$("#btn-slideshow").text('슬라이드쇼 시작');
+				clearInterval(start);
+				toggle = true;
+			}
+		});
 	});
-	
-	$("#btn-slideshow").click(function(){
-		setTimeout(function() {
-			
-		}, 1000);
-	});
-});
 </script>
 </head>
 <body>
